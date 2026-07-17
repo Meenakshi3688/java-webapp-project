@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: badigerm-eta-deploy
+  labels:
+    app: badigerm-eta-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: badigerm-eta-app
+  template:
+    metadata:
+      labels:
+        app: badigerm-eta-app
+    spec:
+      containers:
+      - name: badigerm-eta-container
+        image: badigerm/plwebappimg:v1.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: badigerm-eta-np-service
+  labels:
+    app: badigerm-eta-app
+spec:
+  selector:
+    app: badigerm-eta-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080
