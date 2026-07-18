@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: badigerm-eta-container
-        image: badigerm/plwebappimg:v1.0
+        image: badigerm/plwebappimg:latest
         ports:
         - containerPort: 8080
 ---
