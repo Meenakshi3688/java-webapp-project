@@ -28,7 +28,7 @@ metadata:
     app: badigerm-eta-app
 spec:
   selector:
-    app: badigerm-eta-app
+    app: badigerm-eta-deploy-lbl
 
   type: NodePort
   ports:
